@@ -1,0 +1,15 @@
+[Extract, Transform & Load]
+
+Los archivos originales estaban en la página de la Dirección General de Aguas (DGA): 
+http://www.dga.cl/productosyservicios/derechos_historicos/Paginas/default.aspx
+
+Descargando el consolidado nacional, se puede concatenar la data usando pandas y glob:
+
+    df = pd.concat([pd.read_excel(fn) for fn in glob.glob('Derechos*.xls')]
+
+Luego se limpiaron los datos al detectar ciertas anomalías a nivel de caudal. 
+En particular en Melipilla había un volumen de 500 millones de lt/s que en realidad eran
+500. Para revisar esto fue util la página http://snia.dga.cl/CPAConsultas/site/mainSearch/mainSearch.xhtml
+
+Decidimos nombrar los etl en función de la fecha en que se publican por primera vez. 
+Por eso este script se llama etl_20190928.py
