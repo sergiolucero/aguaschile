@@ -3,7 +3,7 @@ import dash_table
 import pandas as pd
 
 df = pd.read_parquet('DATA/derechos_de_agua.pq')
-df = df.sort_values('CaudalPromedio', ascending=False)
+df = df.sort_values('Caudal_Promedio', ascending=False)
 
 app = dash.Dash(__name__)
 
